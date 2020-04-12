@@ -1,0 +1,118 @@
+﻿<style>
+    .dropdown-menu {
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+</style>
+
+
+<div class="bluenav toolbar" style="display:flex;flex-direction:row;align-items:center;height:66px;">
+
+    <div class="clickableDiv" ng-click="goMapList()" title="MapList"
+         ng-class="{'poppedUp' : selectedState.mapListSelected == true}">
+        <img title="Map List" 
+             src="./image/new icons/list.png" width="25px"
+             class="dottedBorderRed glow " />
+    </div>
+
+
+
+    <div ng-show="Swap.Map==false" class="clickableDiv" ng-click="goMap()" title="Map">
+        <img ng-class="{'poppedUp' : selectedState.mapSelected == true}"
+             class="dottedBorderRed glow" src="./image/new icons/map.png" title="Map View" />
+
+    </div>
+
+
+    <div ng-show="Swap.Map==true" class="clickableDiv" ng-click="openSearch()" title="Search">
+        <img ng-class="{'poppedUp' : selectedState.mapSelected == true}"
+             class="dottedBorderRed glow" src="./image/new icons/search.png" title="Search" />
+    </div>
+
+
+
+    <div class="clickableDiv" ng-click="goAlbum()" title="Photo Album">
+        <img ng-class="{'poppedUp' : selectedState.albumSelected == true}"
+             src="./image/new icons/gallery.png"
+             class="dottedBorderRed glow" />
+    </div>
+
+
+
+    <div ng-show="Swap.SiteList==true" class="clickableDiv" ng-click="goCalendar()" title="Calendar">
+        <img src="./image/clock.png"
+             class="dottedBorderRed glow"
+             ng-class="{'poppedUp' : selectedState.calendarSelected == true}" />
+    </div>
+
+
+    <div class="clickableDiv" ng-click="goJournal()" title="Journal">
+        <img src="./image/new icons/journal.png"
+             class="dottedBorderRed glow"
+             ng-class="{'poppedUp' : selectedState.journalSelected == true}" />
+    </div>
+
+
+    <div class="clickableDiv" ng-click="goSite()" title="Site Information">
+        <img src="./image/new icons/info.png"
+             class="dottedBorderRed glow"
+             ng-class="{'poppedUp' : selectedState.siteSelected == true}" />
+    </div>
+
+    <div class="clickableDiv "  >
+        <div ng-cloak ng-show="stateMachine.state=='CAN_EDIT'"
+             ng-click="toggleEdit()">
+            <img title="enable add pushpin"
+                 src="./image/new icons/marker.png"
+                 class="dottedBorderRed glow "
+                 ng-class="{'poppedUp' : selectedState.editSelected == true}"   />
+        </div>
+    </div>
+
+
+    <!-- <div ng-hide="selectedState.journalSelected === true" class="clickableDiv" ng-click="goMonitor()" title="Problem Report"
+         style="margin-right:0px;">
+        <img src="./image/skull.png"
+             class="dottedBorderRed glow"
+             ng-class="{'poppedUp' : selectedState.monitorSelected == true}" />
+    </div> -->
+    <!--<div ng-show="Swap.Map==true" class="clickableDiv">
+        <img title="enable add pushpin"
+             src="./image/anchor.png"
+             class="dottedBorderRed glow "
+             ng-class="{'poppedUp' : editingMap  === true}" />
+    </div>-->
+
+    <div class="clickableDiv" ng-show="selectedState.journalSelected === true">
+        <div ng-click="editJournal()">
+            <img title="enable writing"
+                 src="./image/pencil.png"
+                 class="dottedBorderRed glow "
+                 ng-class="{'poppedUp' : toolbarState.editingJournal === true }" />
+        </div>
+    </div>
+
+    <!--<div style=" position:absolute;right:0px;top:35%">
+
+        <div ng-include="'common/SocialMediaToolbar.html'"></div>
+    </div>-->
+
+     <div  style="float:right" ng-cloak   ng-controller="SignInController as SignInCtrl" id="authDiv"
+       >
+        <a ng-show="SignInCtrl.authenticationStatus.signedIn" href="" ng-click="SignInCtrl.signOut()">Sign Out</a>
+        <a ng-show="! SignInCtrl.authenticationStatus.signedIn" href="" ng-click="SignInCtrl.goSignInPage()">Sign In</a>
+        <a  ng-hide="SignInCtrl.authenticationStatus.signedIn" href="" ng-click="SignInCtrl.goCreateAccount()">Create Account</a>
+    </div> 
+
+
+</div>
+
+   
+
+
+
+    
+
+
+

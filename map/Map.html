@@ -1,0 +1,60 @@
+﻿
+<div id="mainContainer"   
+    ng-controller="MapController" 
+    style="position:relative" 
+    ng-style="scrollWindowStyle">
+ 
+   
+
+    <!-- <div ng-cloak class="mapLabel" id="mapNameDiv" >
+        {{MapRecord.MapName}}
+    </div> -->
+
+      
+
+
+    <div style="position:absolute;z-index:1002;width:100%;" ng-show="selectedState.searchSelected==true">        
+                                <div   class="card"  >
+                                    
+                                    <div class="card-header"   style="background-color:#8EBBDA">
+                                        <div class="list-header   menuText" >
+                                            Enter address
+                                        </div>
+                                    </div>
+
+                                     <div class="deepGreen card-body" >
+                                            <input ng-model="Search.Address" class="sitelistText  form-control"  />
+                                            <div class="sheerButtonContainer">
+                                                <div class="skyBlue sheerButton" 
+                                                        ng-disabled="BusyWith.uploading">
+                                                    <a href=""     ng-click="geocodeAddress()">Search</a>
+                                                </div>
+                                                
+                                           </div>
+                                     </div>
+
+                                </div>
+    </div>
+                  
+
+
+
+    <div id="bingMapRaw" ng-style="mapStyle"  style="position:relative;margin-left:auto;margin-right:auto;">
+
+    </div>
+
+     
+
+  
+
+    
+
+    <button class="glow"
+                title="zoom to current location" ng-click="getLocation()"
+                style="background-color:white;border:dotted 2px #a7427c;position:absolute;left:50%;margin-left:-30px;height:60px;width:60px;bottom:100px;border-radius:90px">
+        <img src="./image/new icons/marker.png" style="z-index:999;height:40px;width:40px;"  />
+    </button>   
+    
+       
+
+    </div>

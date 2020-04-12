@@ -60,7 +60,7 @@ var baseURL = "http://localhost:7070"
         },
 
         getMapByID: function (mapID) {
-            var endpoint = baseURL + "/api/SelectMap/" + mapID;
+            var endpoint = baseURL + "/map/" + mapID;
             var config = {
                 method: "get",
                 url: endpoint,
@@ -104,7 +104,7 @@ var baseURL = "http://localhost:7070"
        },
 
         getSiteByID: function (siteID) {
-            var endpoint = baseURL + "/api/SelectSite/" + siteID;
+            var endpoint = baseURL + "/site/" + siteID;
             var config = {
                 method: "get",
                 url: endpoint,
@@ -167,8 +167,18 @@ var baseURL = "http://localhost:7070"
             return $http(config);
         },
 
+        getSites: function (mapId) {
+                var endpoint = baseURL + "/site/list/" + mapId;
+                var config = {
+                    method: "get",
+                    url: endpoint,
+                    headers: { 'Content-Type': 'application/json; charset=utf-8' }
+                };
+                return $http(config);
+            },
+
         getPhotos: function (siteID) {
-            var endpoint = baseURL + "/api/Photos/" + siteID;
+            var endpoint = baseURL + "/photo/list/" + siteID;
             var config = {
                 method: "get",
                 url: endpoint,
@@ -304,7 +314,6 @@ var baseURL = "http://localhost:7070"
                 },
                 data: device
             }
-
             return $http(config);
         },
        
