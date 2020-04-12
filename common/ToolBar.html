@@ -18,18 +18,24 @@
 
 
 
-    <div ng-show="Swap.Map==false" class="clickableDiv" ng-click="goMap()" title="Map">
+    <div class="clickableDiv" ng-click="goMap()" title="Map">
         <img ng-class="{'poppedUp' : selectedState.mapSelected == true}"
-             class="dottedBorderRed glow" src="./image/new icons/map.png" title="Map View" />
+             class="dottedBorderRed glow" src="./image/new icons/globe.png" title="Map View" />
 
     </div>
+    <div ng-show="Swap.Map==true" class="clickableDiv">
+        <img title="enable add pushpin"
+             src="./image/new icons/marker.png"
+             class="dottedBorderRed glow "
+             ng-class="{'poppedUp' : editingMap  === true}" />
+    </div>
 
-
-    <div ng-show="Swap.Map==true" class="clickableDiv" ng-click="openSearch()" title="Search">
-        <img ng-class="{'poppedUp' : selectedState.mapSelected == true}"
+    <div  class="clickableDiv" ng-click="openSearch()" title="Search">
+        <img ng-class="{'poppedUp' : selectedState.searchSelected == true}"
              class="dottedBorderRed glow" src="./image/new icons/search.png" title="Search" />
     </div>
 
+      
 
 
     <div class="clickableDiv" ng-click="goAlbum()" title="Photo Album">
@@ -40,19 +46,7 @@
 
 
 
-    <div ng-show="Swap.SiteList==true" class="clickableDiv" ng-click="goCalendar()" title="Calendar">
-        <img src="./image/clock.png"
-             class="dottedBorderRed glow"
-             ng-class="{'poppedUp' : selectedState.calendarSelected == true}" />
-    </div>
-
-
-    <div class="clickableDiv" ng-click="goJournal()" title="Journal">
-        <img src="./image/new icons/journal.png"
-             class="dottedBorderRed glow"
-             ng-class="{'poppedUp' : selectedState.journalSelected == true}" />
-    </div>
-
+   
 
     <div class="clickableDiv" ng-click="goSite()" title="Site Information">
         <img src="./image/new icons/info.png"
@@ -60,38 +54,33 @@
              ng-class="{'poppedUp' : selectedState.siteSelected == true}" />
     </div>
 
-    <div class="clickableDiv "  >
-        <div ng-cloak ng-show="stateMachine.state=='CAN_EDIT'"
-             ng-click="toggleEdit()">
-            <img title="enable add pushpin"
-                 src="./image/new icons/marker.png"
-                 class="dottedBorderRed glow "
-                 ng-class="{'poppedUp' : selectedState.editSelected == true}"   />
-        </div>
+    <div  class="clickableDiv" ng-click="goCalendar()" title="Calendar">
+        <img src="./image/new icons/calendar.png"
+             class="dottedBorderRed glow"
+             ng-class="{'poppedUp' : selectedState.calendarSelected == true}" />
     </div>
 
-
-    <!-- <div ng-hide="selectedState.journalSelected === true" class="clickableDiv" ng-click="goMonitor()" title="Problem Report"
-         style="margin-right:0px;">
-        <img src="./image/skull.png"
+    <div class="clickableDiv" ng-click="goJournal()" title="Journal">
+        <img src="./image/new icons/journal.png"
              class="dottedBorderRed glow"
-             ng-class="{'poppedUp' : selectedState.monitorSelected == true}" />
-    </div> -->
-    <!--<div ng-show="Swap.Map==true" class="clickableDiv">
-        <img title="enable add pushpin"
-             src="./image/anchor.png"
-             class="dottedBorderRed glow "
-             ng-class="{'poppedUp' : editingMap  === true}" />
-    </div>-->
+             ng-class="{'poppedUp' : selectedState.journalSelected == true}" />
+    </div>
+ 
+   
+  
 
-    <div class="clickableDiv" ng-show="selectedState.journalSelected === true">
+
+
+   
+
+    <!-- <div class="clickableDiv" ng-show="selectedState.journalSelected === true">
         <div ng-click="editJournal()">
             <img title="enable writing"
                  src="./image/pencil.png"
                  class="dottedBorderRed glow "
                  ng-class="{'poppedUp' : toolbarState.editingJournal === true }" />
         </div>
-    </div>
+    </div> -->
 
     <!--<div style=" position:absolute;right:0px;top:35%">
 

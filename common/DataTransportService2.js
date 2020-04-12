@@ -22,7 +22,7 @@ var baseURL = "http://localhost:7070"
 
         addMember:function( member )
         {
-            var endpoint = baseURL + "/api/Members";
+            var endpoint = baseURL + "/member/create";
             var config = {
                 method: "post",
                 url: endpoint,
@@ -34,8 +34,8 @@ var baseURL = "http://localhost:7070"
             return $http(config);
         },
 
+
         getMaps: function (memberID) {
-          
             var endpoint = baseURL + "/map/last/" + memberID;
             var config = {
                 method: "get",
@@ -72,7 +72,7 @@ var baseURL = "http://localhost:7070"
         },
 
         addMap:function(wholeMap){
-            var endpoint = baseURL + "/api/Maps";
+            var endpoint = baseURL + "/map/create";
             var config = {
                 method: "post",
                 url: endpoint,
@@ -94,7 +94,7 @@ var baseURL = "http://localhost:7070"
         },
 
         deleteMap: function (id) {
-           var endpoint = baseURL + "/api/Maps/" +id;
+           var endpoint = baseURL + "/map/" +id;
             var config = {
                 method: "delete",
                 url: endpoint
@@ -116,7 +116,7 @@ var baseURL = "http://localhost:7070"
         },
 
         addSite:function(site){
-            var endpoint = baseURL + "/api/Sites";
+            var endpoint = baseURL + "/site/create";
             var config = {
                 method: "post",
                 url: endpoint,
