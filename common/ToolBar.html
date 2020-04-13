@@ -1,52 +1,52 @@
 ﻿<style>
     .dropdown-menu {
-    max-height: 500px;
-    overflow-y: auto;
-}
-
+        max-height: 500px;
+        overflow-y: auto;
+        }
 </style>
 
+<div style="color:white;font-size:larger;background-color:blueviolet;position:absolute;top:50px;left:20px;width:350px;height:400px;z-index:1299">
+        <ul class="dropdown-menu" id="siteListDropDown" style="padding:3px;width:360px">
+                <li ng-repeat="site in AllSites" style="margin-bottom:8px;margin-right:40px">
+                        <a href="" ng-click="selectSite(site)"
+                         ng-class="{'siteListDropDownSelected': site.Name==selectedSite.Name}">wwjjii{{site.Name}}</a>
+                </li>
+        </ul>
+</div> 
 
 <div class="bluenav toolbar" style="display:flex;flex-direction:row;align-items:center;height:66px;">
 
-    <div class="clickableDiv" ng-click="goMapList()" title="MapList"
+     <div class="clickableDiv" ng-click="goMapList()" title="MapList"
          ng-class="{'poppedUp' : selectedState.mapListSelected == true}">
         <img title="Map List" 
-             src="./image/new icons/list.png" width="25px"
+             src="./image/new icons/list.png" 
              class="dottedBorderRed glow " />
-    </div>
+    </div> 
 
 
 
-    <div class="clickableDiv" ng-click="goMap()" title="Map">
-        <img ng-class="{'poppedUp' : selectedState.mapSelected == true}"
-             class="dottedBorderRed glow" src="./image/new icons/globe.png" title="Map View" />
+    <div class="clickableDiv" ng-click="goMap()" title="Map"  ng-class="{'poppedUp' : selectedState.mapSelected == true}" >
+        <img 
+             class="dottedBorderRed glow" 
+             src="./image/new icons/globe.png" title="Map View" />
+    </div> 
 
-    </div>
-    <div ng-show="Swap.Map==true" class="clickableDiv">
+    <div ng-show="Swap.Map==true" class="clickableDiv"  ng-click="toggleEdit()" ng-class="{'poppedUp' : editingMap  === true}">
         <img title="enable add pushpin"
              src="./image/new icons/marker.png"
-             class="dottedBorderRed glow "
-             ng-class="{'poppedUp' : editingMap  === true}" />
-    </div>
+             class="dottedBorderRed glow " />
+    </div> 
 
-    <div  class="clickableDiv" ng-click="openSearch()" title="Search">
-        <img ng-class="{'poppedUp' : selectedState.searchSelected == true}"
+    <div  class="clickableDiv" ng-click="openSearch()"   ng-class="{'poppedUp' : selectedState.searchSelected == true}">
+        <img title="Search"
              class="dottedBorderRed glow" src="./image/new icons/search.png" title="Search" />
     </div>
-
-      
-
 
     <div class="clickableDiv" ng-click="goAlbum()" title="Photo Album">
         <img ng-class="{'poppedUp' : selectedState.albumSelected == true}"
              src="./image/new icons/gallery.png"
              class="dottedBorderRed glow" />
     </div>
-
-
-
-   
 
     <div class="clickableDiv" ng-click="goSite()" title="Site Information">
         <img src="./image/new icons/info.png"
@@ -66,12 +66,7 @@
              ng-class="{'poppedUp' : selectedState.journalSelected == true}" />
     </div>
  
-   
-  
 
-
-
-   
 
     <!-- <div class="clickableDiv" ng-show="selectedState.journalSelected === true">
         <div ng-click="editJournal()">
@@ -87,13 +82,14 @@
         <div ng-include="'common/SocialMediaToolbar.html'"></div>
     </div>-->
 
-     <div  style="float:right" ng-cloak   ng-controller="SignInController as SignInCtrl" id="authDiv"
-       >
+    <div  style="float:right" ng-cloak   ng-controller="SignInController as SignInCtrl" id="authDiv">
         <a ng-show="SignInCtrl.authenticationStatus.signedIn" href="" ng-click="SignInCtrl.signOut()">Sign Out</a>
         <a ng-show="! SignInCtrl.authenticationStatus.signedIn" href="" ng-click="SignInCtrl.goSignInPage()">Sign In</a>
         <a  ng-hide="SignInCtrl.authenticationStatus.signedIn" href="" ng-click="SignInCtrl.goCreateAccount()">Create Account</a>
     </div> 
 
+
+     
 
 </div>
 

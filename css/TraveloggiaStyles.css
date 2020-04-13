@@ -1,7 +1,6 @@
 /*this is the default - border-box means h/w include border and padding - as old ie*/
 body {
-  font-family: 'Karla', Verdana;
-  color: #291808;
+  font-family: 'Cinzel', Verdana;
 }
 
 .rotate270 {
@@ -23,7 +22,7 @@ body {
     height:auto
 }
 
-/* .bluenav {
+.bluenav {
     background-image:url(../image/calmWater.jpg);
 }
 
@@ -34,7 +33,7 @@ body {
 
 .slate {
    background-color: #4a4646;
-} */
+}
 
 .sparkle{
     background-image:url(../image/golddust.jpg);
@@ -46,18 +45,18 @@ body {
     /*filter: alpha(opacity = 50);*/
     background-color:rgba(42,125,118,0.5);
 }
-/* 
+
 .greenMud {
     background-color:#0E7B83;
-} */
-/* 
+}
+
 .skyBlue {
     background-color:#DEE5F2;
-} */
+}
 
-/* .cloudBlue {
+.cloudBlue {
     background-color:#8EBBDA ;
-} */
+}
 
 .lightgreen {
   background-image: url("../image/lightgreen.jpg");
@@ -134,9 +133,8 @@ text-align:center;
 
 
 .menuText {
-    font-family: 'Karla';
-    font-size: 16px;
-    
+    font-family: 'Cinzel', Verdana;
+    color:darkgoldenrod;
 }
 
 
@@ -241,7 +239,7 @@ height:250px;
 .mapLabel {
    position:absolute;
     z-index:99;
-   
+    font-family:Cinzel;
 }
 
 
@@ -286,7 +284,7 @@ padding:5px;
   max-width:62px;
   height:auto;
   display:inline-block;
-  padding:5px;
+  padding:0px;
   margin-right:3px;
 }
 

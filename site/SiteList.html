@@ -1,0 +1,50 @@
+﻿<div ng-style="scrollWindowStyle"
+     id="siteListScrollContainer"
+     style="padding:0px 16px 16px;overflow-y:auto;-webkit-overflow-scrolling: touch;"
+     ng-controller="SiteListController">
+
+
+  
+
+        <div class="card basil" ng-repeat="stopover in ScheduledSites"   on-finish-render="ngRepeatFinished">
+            <div class="card-header"  style="background-color:#244F55;color:white;font-size:14px;"   
+                 ng-click="goSiteDetail(stopover)" >{{stopover.Name}}
+            </div>
+            <div class="card-body " >
+                <div style="width:20%;float:right;margin-left:8px;">
+                    <label>Stop No.</label>
+                    <input style="margin-left:auto;margin-right:auto;text-align:center;width:50px;height:40px;" 
+                           type="text" ng-model="stopover.RouteIndex" />
+                </div>
+
+                <div>
+                   <!-- <div>{{stopover.Address}}</div>-->
+                    <div >
+                         <span style="margin-left:15px">ARRIVE:&nbsp;&nbsp;</span><span style="color:#b9f23e">{{stopover.Arrival | date:'MMM d yyyy h:mm a'}} </span>
+                    </div>
+                    <div >
+                        <span style="margin-left:15px">DEPART:&nbsp;&nbsp;</span><span style="color:#b9f23e">{{stopover.Departure | date:'MMM d yyyy h:mm a'}}</span></div>
+                    </div>
+                </div>
+        </div>
+
+    
+
+
+
+    <div class="sheerButtonContainer" ng-show="ready==true && stateMachine.state=='CAN_EDIT'">
+        <div   class="sheerButton shadow">
+            <a href="" ng-click="SaveList()">Save List</a>
+        </div>
+    </div>
+
+    <div class="spacer250"></div>
+
+
+
+
+
+
+
+</div>
+  

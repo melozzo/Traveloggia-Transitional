@@ -1,0 +1,61 @@
+
+
+ <div ng-click="goAlbum()"
+         class="dottedBorderRed glow"
+         ng-style="previewPaneStyle"
+         style="padding:2px;">
+        <div ng-controller="AlbumController" style="height:100%">
+         
+    
+                <div ng-show="PhotoList[0]!=null">
+             
+                        <div ng-if="PhotoList[0].StorageURL !=null ">
+                                <div ng-if="PhotoList[0].orientationID==null || PhotoList[0].orientationID ==1 || PhotoList[0].orientationID ==2 || PhotoList[0].orientationID ==4">
+                                        <div ng-style="previewImageStyle"
+                                                style="background-image:url('{{  imageServer + imagePath + PhotoList[0].FileName}}');
+                                                                background-size:cover; background-position:50% 50%; background-repeat:no-repeat">
+                                        </div>
+                                </div>
+
+                                <div ng-if="PhotoList[0].orientationID != null && PhotoList[0].orientationID !=1 && PhotoList[0].orientationID !=2 && PhotoList[0].orientationID !=4">
+
+                                        <div ng-if="Capabilities.alreadyKnowsHow==false ">
+                                                <div ng-style="previewImageStyle" style="overflow:hidden">
+                                                        <img ng-class="getPreviewImageClass()"
+                                                        src="{{imageServer + imagePath + PhotoList[0].FileName}}"></img>
+                                                </div>
+                                                <!-- <img style="display:none"
+                                                on-load="onPreviewImageLoad($event, PhotoList[0].orientationID,PhotoList[0])"
+                                                ng-src="{{  imageServer + imagePath + PhotoList[0].FileName  +imageRefresher.queryString}}" />
+                                                <canvas id="canvas" style="display:none"></canvas> -->
+                                        </div>
+
+                                        <div ng-if="Capabilities.alreadyKnowsHow==true">
+                                        <img style="width:100%;visibility:visible;vertical-align:middle"
+                                                ng-src="{{  imageServer + imagePath + PhotoList[0].FileName }}" />
+                                        </div>
+                                </div><!-- end if vertical image possibly need rotation and  scaling -->
+
+
+                        </div><!-- end if image stored on amazon - ie from the new version-->
+
+
+                        <div ng-if="PhotoList[0].StorageURL==null " ng-style="previewImageStyle"><!-- from the old server lemnos? -->
+                                <div style="height:100%;width:100%;background-image:url('{{oldImagePath + PhotoList[0].FileName}}');
+                                                        background-size:cover;background-repeat:no-repeat;background-position:center">
+                                </div>
+                        </div>
+
+                </div><!-- end there are any photos or we show the ship at sea-->
+                
+
+
+                <div ng-show="PhotoList.length==0">
+                    <div ng-style="previewImageStyle" style="background-size:cover; background-position:center; background-image : url('./image/online.gif')"></div>
+                </div>
+                
+
+                
+        </div>
+</div>
+

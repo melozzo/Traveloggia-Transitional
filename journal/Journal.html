@@ -1,0 +1,83 @@
+﻿<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+
+<div ng-controller="JournalController"
+     ng-style="scrollWindowStyle"
+     style="overflow-y:auto;font-family:Centaur;font-size:18px;"
+     class="papyrus">
+
+
+        <div ng-show="JournalEntries.length > 0"  class="cloudBlue" style="min-height:55px">
+            <ul >
+                <li style="display:inline"  ng-repeat="journal in JournalEntries" >
+                    <a ng-class="{journalSelected: journal.JournalID == Journal.JournalID }"   
+                       style="padding-top:0px;padding-bottom:0px;" href="" 
+                       ng-click="loadContent($index)">{{journal.Title}}</a>
+                </li>
+            </ul>
+        </div>
+
+
+
+        <div class="card-body papyrus" style="position:relative">
+
+
+
+
+            <div class="journalLabel" ng-show="Journal.JournalID != null">
+                Journal Date: {{Journal.JournalDate  | date:'MM/dd/yyyy @ h:mma'}}
+            </div>
+
+            <div ng-show="stateMachine.state ===  'IS_EDITING' ">
+                Title
+                <input type="text" class="form-control" id="journalTitle" ng-model="Journal.Title">
+            </div>
+
+            <div ng-show="stateMachine.state ==  'IS_EDITING' ">
+                Hashtags (enter comma separated list)
+                <input type="text" class="form-control" id="journalHashtags" ng-model="Journal.KeyWords">
+            </div>
+
+            <div class="card-text-center">
+
+                <div ng-hide="stateMachine.state ===   'IS_EDITING'" style="width:100%;min-height:160px;margin-top:16px"
+                     ng-bind-html="Journal.Text | unsafe">
+
+                </div>
+
+              
+                <text-angular name="htmlcontenttwo" ng-model="Journal.Text" ng-show="stateMachine.state == 'IS_EDITING' "
+                              ta-toolbar="[['h1', 'h2', 'h3', 'h4',  'p', 'pre', 'quote'],
+        ['bold', 'italics', 'underline',  'ul', 'ol', 'redo', 'undo', 'clear'],
+        ['justifyLeft', 'justifyCenter', 'justifyRight', 'indent', 'outdent'],
+        ['html',  'wordcount', 'charcount']]">
+
+                </text-angular>
+             
+
+                <div class="sheerButtonContainer">
+                    <div ng-show="stateMachine.state == 'IS_EDITING'" class="skyBlue sheerButton shadow">
+                        <a href="" ng-click="saveJournal()">Save</a>
+                    </div>
+                    <div ng-show="stateMachine.state == 'CAN_EDIT' && Journal.JournalID != null" class="skyBlue sheerButton shadow">
+                        <a href="" ng-click="confirmDeleteJournal()">Delete</a>
+                    </div>
+                    <div ng-show="stateMachine.state =='CAN_EDIT'  && Journal.JournalID != null " class="skyBlue sheerButton shadow">
+                        <a href="" ng-click="addNew()">Add New</a>
+                    </div>
+                    <div ng-show="stateMachine.state=='IS_EDITING'  " class="skyBlue sheerButton shadow">
+                        <a href="" ng-click="cancelJournal()">Cancel</a>
+                    </div>
+
+                </div>
+
+            </div>
+            <div style="margin-top:5px;padding-right:5px;" ng-show="JournalEntries.length > 0">
+
+                <div ng-include="'common/SocialMediaToolbar.html'"></div>
+            </div>
+
+        </div><!--end card body-->
+   
+  
+
+</div>

@@ -1,0 +1,93 @@
+﻿<script src="./lib/load-image.all.min.js"></script>
+<div id="albumDiv"
+     ng-style="scrollWindowStyle"
+     class="greenMud"
+     style="padding:0px 16px 16px;overflow-y:auto;-webkit-overflow-scrolling: touch;"
+     ng-controller="AlbumController">
+
+
+
+        <div ng-controller="UploadController" ng-show="stateMachine.state==='CAN_EDIT' " style="margin-bottom:20px;padding-bottom:0px">
+
+            <div class="panel-group" id="accordion" style="margin-top:10px;margin-bottom:4px;padding-bottom:0px;">
+                <div class="card" style="background-color:#DEE5F2;font-family:Centaur;font-size:16px;margin-bottom:0px;padding-bottom:0px;">
+                    <div class="card-header" style="background-color:#8EBBDA;text-align:right;">
+                        <h5>
+                            <a data-toggle="collapse" style="font-family:Cinzel;position:relative;right:46px;" data-parent="#accordion" href="" data-target="#collapseOne">Add Photos</a>
+                        </h5>
+                    </div>
+
+                    <div id="collapseOne" class="panel-collapse collapse ">
+                        <div class="card card-body skyBlue" style="height:240px">
+                            <input id="photoFileInput" type="file" accept="image/*" capture="camera" multiple=""
+                                   onchange="angular.element(this).scope().fileNameChanged(this)" style="width:90%" />
+                            <div id="previewPanel" style="margin-top:10px;padding-top:10px;">
+
+                            </div>
+                            <div>
+                                <a data-toggle="collapse" style="font-family:Cinzel;href=" " data-target="#collapseOne">
+                                    <button ng-disabled="BusyWith.uploading"
+                                            style="margin-top:10px;background-color:#244F55" class="btn btn-primary"
+                                            ng-click="handleUploadClick()">
+                                        Upload
+                                    </button>
+
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+
+        <div  style="margin:0px;padding:0px;" id="photoListContainer" >
+            <div ng-repeat="Photo in PhotoList " style="margin-top:4px;padding-top:0px;">
+                
+                <a href="" ng-click="selectPhoto(Photo)" style="text-wrap:normal; word-wrap:break-word; overflow-wrap:break-word;">
+                    <div ng-if="Photo.StorageURL !=null " class="imageFrame">
+
+
+
+                        <div ng-if="Photo.orientationID == null || Photo.orientationID ==1 || Photo.orientationID ==2 || Photo.orientationID ==4 || Capabilities.alreadyKnowsHow == true">
+                            <img src="./image/hourglass.png" style="width:100px" />
+
+                            <img on-load="SaveSizeAndSwap($event,Photo)"
+                                 style="display:none"
+                                 ng-style="getImageStyle(Photo)"
+                                 ng-src="{{  imageServer + imagePath + Photo.FileName}}" />
+                        </div>
+
+
+                        <div ng-if="Photo.orientationID != null && Photo.orientationID !=1  && Photo.orientationID !=2  && Photo.orientationID !=4  &&Capabilities.alreadyKnowsHow ==false">
+                            <img src="./image/hourglass.png" style="width:100px" />
+                            <img style="position:absolute;display:none"
+                                 on-load="RotateAndSwap($event, Photo.orientationID,Photo)"
+                                 ng-src="{{  imageServer + imagePath + Photo.FileName }}" />
+                            <canvas id="canvas" style="display:none;"></canvas>
+                        </div>
+
+
+                    </div>
+
+                    <div ng-if="Photo.StorageURL==null " class="imageFrame">
+                        <div>
+                            <img src="./image/hourglass.png" style="width:100px" />
+                            <img ng-style="getImageStyle(Photo)"
+                                 style="display:none"
+                                 on-load="SaveSizeAndSwap($event,Photo)"
+                                 ng-src="{{  oldImagePath + Photo.FileName}}" />
+                        </div>
+                    </div>
+                </a>
+              
+            </div>
+
+        </div>
+   
+  
+</div>
+

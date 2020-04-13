@@ -1,0 +1,73 @@
+﻿
+
+
+<div id="maincontainer" ng-controller="SignInController as Ctrl"   ">
+     
+   
+<form>
+<div class="container-fluid" style="font-size:24px">
+    <div class ="row">
+         <div class="col-xs-12 col-sm-6 offset-sm-3">
+
+             <div style="height:30px">
+
+             </div>
+
+             <div style="display:flex;margin-bottom:20px;">
+
+                <!-- <img src="./image/new icons/diamond-card.png" alt="Traveloggia" title="Traveloggia" 
+                style="height:40px;width:40px;float:left;margin-right:12px;" /> -->
+            
+             <div style="font-weight:800;padding-left:10px;padding-bottom:10px">
+                Traveloggia Carte Blanche
+                </div>
+
+
+             </div>
+
+            
+
+
+            <div class="lightgreen centered " style="padding:16px;margin-bottom:8px;border-radius:3.5px;">
+                    <input class="signIn" required ng-model = "Ctrl.Member.Email" placeholder="email address" type="text"  />
+            </div>
+
+
+            <div class="lightgreen centered"  style="padding:16px;margin-bottom:8px;border-radius:3.5px">   
+                
+                <input class="signIn" required  ng-model="Ctrl.Member.Password"  placeholder="password" type="password"  />
+            </div>
+
+
+
+
+
+
+        <div id="buttonDiv"  style="text-align:center;padding:16px;">
+          
+            <div ng-show="Ctrl.authenticationStatus.firstAttempt" class="lightgreen greenButton" >
+                  <a  ng-click="Ctrl.signIn()">Sign In</a> 
+            </div>
+
+            <div ng-show="Ctrl.authenticationStatus.failedSignin" class="lightgreen greenButton" >
+                <a ng-click="Ctrl.signIn()">Try Again</a>  
+            </div>
+                   
+            <div ng-show="Ctrl.authenticationStatus.createAccount"  class="lightgreen greenButton">
+                <a ng-click="Ctrl.createAccount()" >Create Account</a>
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    </div>
+   
+   
+    
+   </div>     
+</form>
+</div>
+  

@@ -1,0 +1,68 @@
+﻿<div ng-controller="MonitorController" ng-style="scrollWindowStyle"
+    style="background-color:darkgray;overflow-y:scroll">
+   
+  <div  style="padding:15px;">
+            <h3> Diagnostics</h3>
+        
+            <form style="margin-top:30px;margin-bottom:60px;margin-right:15px;margin-left:15px;">
+                <div class="form-group">
+                   Issue
+                    <textarea style="font-family:Consolas;font-size:16px;" rows="10" class="form-control"  ng-model="Capabilities.currentDevice.Issue" />
+                </div>
+
+               
+                <div class="sheerButtonContainer">
+                          <div class="sheerButton shadow">
+                              <a href="" ng-click="submitIssue()">SUBMIT</a></div>
+                </div>
+              <div style="height:15px"></div>
+            <div style="clear:right" class ="form-group">
+                   Width
+                    <input class="form-control" type="text" value={{Capabilities.currentDevice.windowInnerWidth}} readonly>
+                </div>
+                 <div style="clear:right" class ="form-group">
+                   Height
+                    <input class="form-control" type="text" value={{Capabilities.currentDevice.windowInnerHeight}} readonly>
+                </div>
+                <div style="clear:right" class ="form-group">
+                    OS Name
+                    <input class="form-control" type="text" value={{Capabilities.currentDevice.osName}} readonly>
+                </div>
+                <div class="form-group">
+                    OS Version
+                    <input class="form-control" type="text" value={{Capabilities.currentDevice.osVersion}} readonly>
+                </div>
+                <div class="form-group">
+                    Browser Name
+                    <input class="form-control" type="text" value={{Capabilities.currentDevice.browserName}} readonly>
+                </div>
+                <div class="form-group">
+                    Browser Version
+                    <input class="form-control" type="text" value={{Capabilities.currentDevice.browserVersion}} readonly>
+                </div>
+                <div class="form-group">
+                    Engine Name
+                    <input class="form-control" type="text" value={{Capabilities.currentDevice.engineName}} readonly>
+                </div>
+                <div class="form-group">
+                   Engine Version
+                    <input class="form-control" type="text" value={{Capabilities.currentDevice.engineVersion}} readonly>
+                </div>
+                <div class="form-group">
+                    Device Model
+                    <input class="form-control" type="text" value={{Capabilities.currentDevice.deviceModel}} readonly>
+                </div>
+                <div class="form-group">
+                    Device Type
+                    <input class="form-control" type="text" value={{Capabilities.currentDevice.deviceType}} readonly>
+                </div>
+                <div class="form-group">
+                   Device Vendor
+                    <input class="form-control" type="text" value={{Capabilities.currentDevice.deviceVendor}} readonly>
+                </div>
+                
+               
+            </form>
+        
+  </div>         
+</div>

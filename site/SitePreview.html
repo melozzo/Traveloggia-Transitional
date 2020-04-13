@@ -1,0 +1,52 @@
+﻿
+<div ng-controller="SiteController as siteCtrl"
+     ng-click="goSite()"
+     class="dottedBorderRed glow skyBlue"
+     style="padding:2px;overflow-y:auto"
+     ng-style="previewPaneStyle">
+
+
+        <div id="frame" style="padding:6px;" >
+
+
+            <div class="cloudBlue menuText listHeader" >
+                {{siteCtrl.Site.Name != null? siteCtrl.Site.Name : "Site Information"}}
+            </div>
+
+            <div class="infoText">
+
+                <div style="text-align:center;">{{siteCtrl.Site.Address}}</div>
+
+                <div style="word-break:break-all">{{siteCtrl.Site.Description }} </div>
+            </div>
+          
+        </div>
+        
+</div>
+
+<!-- <div class="form-group">
+    <label for="Arrival">arrival:</label>
+    <input  readonly type="text"  class="form-control journalBodyFont" id="Arrival" value="{{siteCtrl.Site.Arrival| date : 'MMM d, yyyy  h:m a'}}" />
+</div>
+
+
+<div class="form-group">
+    <div class="infoGroup"><b>departure:</b></div>
+    <input readonly type="text" class="form-control journalBodyFont" id="Departure"
+           value="{{siteCtrl.Site.Departure| date : 'MMM d, yyyy  h:m a'}}" />
+</div>
+
+<div class="form-group">
+    <label for="phone">phone:</label>
+    <input readonly type="text" value="{{siteCtrl.Site.Phone}}" class="form-control" id="phone">
+</div>
+
+<div class="form-group">
+    <label for="Email">email:</label>
+    <input readonly type="email" value="{{siteCtrl.Site.Email}}" class="form-control" id="Email">
+</div>
+
+<div class="form-group">
+    <label for="URL">website:</label>
+    <input readonly type="text" value="{{siteCtrl.Site.URL}}" class="form-control" id="URL">
+</div>-->

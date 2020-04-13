@@ -1,0 +1,70 @@
+﻿<div ng-controller="SocialMediaController">
+
+    <div id="toolbarContainer">
+        <button ng-click="facebook()" class="shareBarButton">
+            <img src="./image/fb.png"
+                 class="dottedBorderRed glow shareBarImage"
+                 ng-class="{'poppedUp' : selectedState.facebookSelected == true}" />
+        </button>
+        <button ng-click="pinterest()" class="shareBarButton">
+            <img src="./image/pintrest.png"
+                 class="dottedBorderRed glow shareBarImage"
+                 ng-class="{'poppedUp' : selectedState.pinterestSelected == true}" />
+        </button>
+        <!--
+            NO CAN DO ISNTAGRAM IS WISE TO HANGERS ON
+            <button ng-click="" class="shareBarButton">
+            <img src="./image/instagram.png"
+                 class="dottedBorderRed glow shareBarImage"
+                 ng-class="{'poppedUp' : selectedState.instagramSelected == true}" />
+        </button>
+        -->
+        <button id="tweetBtn" class="shareBarButton" ng-click="twitter()">
+            <img src="./image/twitter.jpg"
+                 class="dottedBorderRed glow shareBarImage"
+                 ng-class="{'poppedUp' : selectedState.twitterSelected == true}" />
+        </button>
+
+        <button class="shareBarButton" ng-click="sendEmail()" title="Share Email">
+            <img src="./image/email.png"
+                 class="dottedBorderRed glow shareBarImage"
+                 ng-class="{'poppedUp' : selectedState.emailSelected == true}" />
+        </button>
+
+
+        <button class="shareBarButton" ng-click="toggleLink()" title="Share Link">
+            <img src="./image/internet.png"
+                 class="dottedBorderRed glow shareBarImage"
+                 ng-class="{'poppedUp' : selectedState.linkSelected == true}" />
+        </button>
+    </div>
+
+
+    <div id="copyURLPanel" ng-show="selectedState.linkSelected== true"
+         style="width:100%;margin:0px">
+        <div class="card">
+            <div class="cloudBlue headerPanel">
+                <div class="menuText panel-title ">
+                    Copy Url
+                </div>
+            </div>
+
+
+            <div class="deepGreen">
+                <input value={{shareUrl}} class="sitelistText form-control " />
+
+                <div class="sheerButtonContainer">
+
+                    <div class="skyBlue sheerButton"
+                         ng-disabled="BusyWith.uploading">
+                        <a href="" ng-click="toggleLink()">Close</a>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+
+</div>

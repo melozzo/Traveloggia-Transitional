@@ -1,0 +1,179 @@
+﻿
+<link rel="stylesheet" href="./css/lib/flatpickr.min.css"/>
+<script src="./lib/flatpickr.min.js"></script>
+
+<div  ng-controller="SiteController as siteCtrl"  
+    ng-style="scrollWindowStyle" 
+    class="skyBlue"
+    style="margin-left:auto;margin-right:auto;padding:0px;overflow-y:auto;-webkit-overflow-scrolling: touch;max-width:450px;" >
+
+
+            <form class=" infoText listColumn"  id="SiteInfo">
+               
+                 <div class="cloudBlue menuText listHeader" >
+                    {{siteCtrl.Site.Name}}
+                </div>
+
+                <div class="form-group">
+                    <div class="infoText"><b>name:</b></div>
+                    <input type="text" ng-change="siteCtrl.setDirty()" ng-model="siteCtrl.Site.Name" class=" sitelistText form-control" id="Name">
+                </div>
+
+
+
+                <div  class="form-group" >
+                    <div class="infoText"><b>address:</b></div>
+                    <input type="text" ng-change="siteCtrl.setDirty()" ng-model="siteCtrl.Site.Address" class="sitelistText form-control" id="Address">
+                </div>
+
+
+                <div class="form-group">
+                    <label for="description">description:</label>
+                    <textarea rows="10" ng-change="siteCtrl.setDirty()" ng-model="siteCtrl.Site.Description " class="sitelistText form-control" id="description" />
+                </div>
+
+          
+
+                <div class="form-group" id="Arrival">
+                       <label for="Arrival">arrival:</label>
+                        
+                                <div ng-if="Capabilities.currentDevice.deviceType==null">
+                                    <div class='input-group date'>
+                                              <input  ng-change="siteCtrl.setDirty()" class="sitelistText form-control"  value="{{siteCtrl.Site.Arrival | date : 'MMM d, yyyy h:mm a'}}"/>
+                                              <span class='input-group-addon' onclick="dropIt('Arrival')">
+                                                  <img src="image/small-calendar.png" style="display:inline-block;margin-left:3px;height:25px;width:25px;" />
+                                             </span>
+                                    </div>
+                                </div>
+                                <div ng-if="Capabilities.currentDevice.deviceType != null">
+
+                                    <div class='input-group date'>
+                                        <input ng-change="siteCtrl.setDirty()" class="sitelistText form-control" type="datetime-local" style="display:inline-block;height:38px"
+                                               ng-model="siteCtrl.Site.Arrival" />
+                                        <span class='input-group-addon'>
+                                            <img src="image/small-calendar.png" style="display:inline-block;margin-left:3px;height:25px;width:25px;" />
+                                        </span>
+                                    </div>
+
+                                </div>
+                </div>
+
+                <div class="form-group" id="Departure">
+                       <label for="Arrival">departure:</label>
+                            <div ng-if="Capabilities.currentDevice.deviceType==null">
+                                          <div class='input-group date'>
+                                                <input ng-change="siteCtrl.setDirty()"   class="sitelistText form-control"  value="{{siteCtrl.Site.Departure | date : 'MMM d, yyyy h:mm a'}}"/>
+                                                <span class='input-group-addon' onclick="dropIt('Departure')">
+                                                    <img src="image/small-calendar.png" style="margin-left:3px;height:25px;width:25px;"/>
+                                                </span>
+                                          </div>
+                            </div>
+                            <div ng-if="Capabilities.currentDevice.deviceType !=null">
+
+                                <div class='input-group date'>
+                                    <input ng-change="siteCtrl.setDirty()" class="sitelistText form-control" type="datetime-local" style="display:inline-block;height:38px"
+                                           ng-model="siteCtrl.Site.Departure" />
+                                    <span class='input-group-addon'>
+                                        <img src="image/small-calendar.png" style="display:inline-block;margin-left:3px;height:25px;width:25px;" />
+                                    </span>
+                                </div>
+
+
+
+                                <!--<input style="display:inline-block;width:290px;height:30px;" type="datetime-local" class="sitelistText form-control"
+           value="{{siteCtrl.Site.Departure | date : 'MMM d, yyyy h:mm a'}}"  />
+    <img src="image/small-calendar.png" style="display:inline-block;margin-left:3px;height:25px;width:25px;" />-->
+
+                            </div>
+                </div>
+
+
+
+                <div class="form-group" >
+                            <div class="infoText"><b>stop no.:</b></div>
+                            <input ng-change="siteCtrl.setDirty()" style="display:inline;width:60px;float:left"   ng-model="siteCtrl.Site.RouteIndex" class="sitelistText form-control">        
+                           <!--<div class="element-container" style="float:left">
+                                  <div  md-whiteframe="10" >
+                                            <md-num-picker ng-model="siteCtrl.Site.RouteIndex"  min-value="0" ></md-num-picker>
+                                  </div>
+                           </div>   -->
+                </div> 
+                
+
+                <div class="form-group" style="clear:left">
+                    <label for="phone">phone:</label>
+
+                      <div class="input-group">
+                                    <input ng-change="siteCtrl.setDirty()" type="text" ng-model="siteCtrl.Site.Phone" class="sitelistText form-control" id="Phone">
+                                    <span class='input-group-addon' >
+                                            <a style="padding:0px;margin:0px;" href="tel:+{{siteCtrl.Site.Phone}}">
+                                        <img style="width:25px;height:25px;margin-left:3px;" src="image/cell1.png"  /></a>
+                                    </span>
+                        </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="Email">email:</label>
+                    <div class="input-group">
+                                    <input ng-change="siteCtrl.setDirty()" type="text" ng-model="siteCtrl.Site.Email" class="sitelistText form-control" id="Email">
+                                    <span class='input-group-addon' ng-click="siteCtrl.sendEmail()">
+                                            <img style="width:25px;height:25px;margin-left:3px;" src="image/mail.png"  />
+                                    </span>
+                        </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="URL">website:</label>
+                        <div class="input-group">
+                                    <input ng-change="siteCtrl.setDirty()" type="text" ng-model="siteCtrl.Site.URL" class="sitelistText form-control" id="URL">
+                                    <span class='input-group-addon' ng-click="siteCtrl.openURL()">
+                                            <img style="width:25px;height:25px;margin-left:3px;"  src="image/internet.png"  />
+                                    </span>
+                        </div>
+                </div>
+
+
+
+           
+
+                      <div class="sheerButtonContainer">
+                            <div ng-show="stateMachine.state=='CAN_EDIT' " class ="sheerButton shadow">
+                                <a href="" ng-click="siteCtrl.saveSite()">Save</a>
+                            </div>
+                            <div ng-show="stateMachine.state=='CAN_EDIT' && siteCtrl.Site.SiteID != null " class="sheerButton shadow" >
+                              <a   href="" ng-click="siteCtrl.confirmDeleteSite()" >Delete</a>
+                            </div>
+                     </div>
+
+                
+                
+        <div class="spacer250"></div>
+
+
+            </form>
+
+
+   <script>
+
+        function dropIt(ctrl) {
+            if ($("#" + ctrl)[0]._flatpickr == null)
+                $("#" + ctrl).flatpickr(
+                          {
+                              enableTime: true,
+                              allowInput: false,
+                              dateFormat: 'M j Y  h:i',
+                              onChange: function (selectedDates, dateStr, instance) {
+                                  setDateTime(dateStr, ctrl)
+                              }
+                          });
+
+                $("#"+ctrl)[0]._flatpickr.toggle();
+          
+        }
+
+    </script>
+
+
+</div>

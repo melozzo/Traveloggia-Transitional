@@ -1,0 +1,98 @@
+﻿
+
+<div   ng-controller="MapListController" 
+          ng-style="scrollWindowStyle">
+
+    <div >
+        <div ng-include="'map/MapListToolBar.html'"></div>
+    </div>
+
+   <div id="lightBlueCenterColumn"  class=" infoText listColumn skyBlue"
+                style="overflow-y:auto;-webkit-overflow-scrolling: touch;max-width:450px;">  
+    
+
+
+                    <div id="editMapNamePanel" ng-show="selectedState.addSelected == true || selectedState.editSelected == true"  >
+                                <div class="card" >
+                                    
+                                    <div    class="cloudBlue">
+                                        <div class="menuText headerPanel" >
+                                            Edit Map Name
+                                        </div>
+                                    </div>
+
+                                     <div class="deepGreen card-body" >
+                                            <input ng-model="selectedMap.MapName" class="sitelistText  form-control"  />
+                                            <div class="sheerButtonContainer">
+                                                <div class="skyBlue sheerButton" 
+                                                        ng-disabled="BusyWith.uploading">
+                                                    <a href=""     ng-click="saveMapEdit()">Save</a>
+                                                </div>
+                                                <div class="skyBlue sheerButton" 
+                                                        ng-disabled="BusyWith.uploading">
+                                                     <a href=""    ng-click="cancelMapEdit()">Cancel</a>
+                                                </div>
+                                           </div>
+                                     </div>
+
+                                </div>
+                    </div>
+
+    
+                    <div id="copyURLPanel" ng-show="selectedState.linkSelected== true"  style="margin:0px">
+                            <div class="card"  >
+                                    <div class="cloudBlue headerPanel">
+                                        <div class="menuText panel-title ">
+                                            Copy Url
+                                        </div>
+                                    </div>
+
+                            
+                                        <div class="deepGreen" >
+                                            <input value="www.traveloggia.pro?MapID={{selectedMap.MapID}}"  class="sitelistText form-control " />
+                       
+                                         <div class="sheerButtonContainer">
+                        
+                                                <div class="skyBlue sheerButton"
+                                                        ng-disabled="BusyWith.uploading"
+                                                       >
+                                                       <a href=""  ng-click="toggleLink()">Close</a>
+                                                </div>
+                                            </div>  
+                    
+                                        </div>
+                              
+
+                            </div>
+                     </div>
+   
+               
+
+                  <div id="mapListDivs"    >
+                  
+                        <div  class="cloudBlue menuText listHeader" >
+                            Map List
+                        </div>
+
+                        <div id="mapList" style="position:relative;list-style:none;">
+                              <div ng-repeat="map in MapList" class="mapListItem">
+                                    <input 
+                                            style="margin:3px;position:relative;left:4px;height:26px;width:26px;display:inline-block"
+                                        type="radio" name="charts"    
+                                        ng-model="$parent.MapID"
+                                        value="{{map.MapID}}"
+                                        ng-change="switchMap(map)" 
+                                       ng-checked="{{selectedMapID == map.MapID}}"/>
+                                
+                                <a href=""   ng-click="switchAndGo(map)">
+                                        {{map.MapName}}
+                                </a>
+                            </div>
+                        </div>
+               
+                 </div>
+
+
+
+    </div>
+</div>

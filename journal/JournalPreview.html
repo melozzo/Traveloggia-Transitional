@@ -1,0 +1,23 @@
+﻿
+
+<div  ng-controller="JournalController" 
+     ng-click="goJournal()" 
+    class="dottedBorderRed glow papyrus" 
+    style="padding:2px; overflow-y:auto"
+    ng-style="previewPaneStyle">
+
+    <div   style="padding:6px;font-family:Centaur;font-size:18px;">
+
+           <div class="cloudBlue menuText listHeader">
+               {{ JournalEntries.length > 0 ?  JournalEntries[0].Title : "Journal" }}
+           </div>
+
+                       
+            <div  style="font-size:14px;" ng-bind-html="JournalEntries[0].Text | unsafe">
+            </div>
+        
+
+    </div>
+
+
+</div>

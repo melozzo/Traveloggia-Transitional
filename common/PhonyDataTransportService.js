@@ -1,11 +1,11 @@
 ﻿
 angularTraveloggia.factory('DataTransportService', function ($http,$q) {
- //   var baseURL = "http://localhost/TraveloggiaServices";
-var baseURL = "http://localhost:7070"
+   // var baseURL = "http://localhost/TraveloggiaServices";
+var baseURL = "https://traveloggiaservices.net"
     return {
    
         getMember: function (email, password) {
-            var endpoint = baseURL + "/member/login";
+            var endpoint = baseURL + "/api/Members/Validate";
             var config = {
                 method:"post",
                 url: endpoint,
@@ -22,7 +22,7 @@ var baseURL = "http://localhost:7070"
 
         addMember:function( member )
         {
-            var endpoint = baseURL + "/member/create";
+            var endpoint = baseURL + "/api/Members";
             var config = {
                 method: "post",
                 url: endpoint,
@@ -34,9 +34,9 @@ var baseURL = "http://localhost:7070"
             return $http(config);
         },
 
-
         getMaps: function (memberID) {
-            var endpoint = baseURL + "/map/last/" + memberID;
+          
+            var endpoint = baseURL + "/api/Maps/" + memberID;
             var config = {
                 method: "get",
                 url: endpoint,
@@ -48,7 +48,7 @@ var baseURL = "http://localhost:7070"
         },
 
         getMapList: function (memberID) {
-            var endpoint = baseURL + "/map/list/" + memberID;
+            var endpoint = baseURL + "/api/MapList/" + memberID;
             var config = {
                 method: "get",
                 url: endpoint,
@@ -60,7 +60,7 @@ var baseURL = "http://localhost:7070"
         },
 
         getMapByID: function (mapID) {
-            var endpoint = baseURL + "/map/" + mapID;
+            var endpoint = baseURL + "/api/SelectMap/" + mapID;
             var config = {
                 method: "get",
                 url: endpoint,
@@ -72,7 +72,7 @@ var baseURL = "http://localhost:7070"
         },
 
         addMap:function(wholeMap){
-            var endpoint = baseURL + "/map/create";
+            var endpoint = baseURL + "/api/Maps";
             var config = {
                 method: "post",
                 url: endpoint,
@@ -83,7 +83,7 @@ var baseURL = "http://localhost:7070"
         },
 
         updateMap: function (wholeMap) {
-            var endpoint = baseURL + "/map/"+ wholeMap.MapID;
+            var endpoint = baseURL + "/api/Maps/"+ wholeMap.MapID;
             var config = {
                 method: "put",
                 url: endpoint,
@@ -94,7 +94,7 @@ var baseURL = "http://localhost:7070"
         },
 
         deleteMap: function (id) {
-           var endpoint = baseURL + "/map/" +id;
+           var endpoint = baseURL + "/api/Maps/" +id;
             var config = {
                 method: "delete",
                 url: endpoint
@@ -104,7 +104,7 @@ var baseURL = "http://localhost:7070"
        },
 
         getSiteByID: function (siteID) {
-            var endpoint = baseURL + "/site/" + siteID;
+            var endpoint = baseURL + "/api/SelectSite/" + siteID;
             var config = {
                 method: "get",
                 url: endpoint,
@@ -116,20 +116,18 @@ var baseURL = "http://localhost:7070"
         },
 
         addSite:function(site){
-            var endpoint = baseURL + "/site/create";
+            var endpoint = baseURL + "/api/Sites";
             var config = {
                 method: "post",
                 url: endpoint,
                 headers: {
-                    'Content-Type': 'application/json; charset=utf-8'
+                      'Content-Type': 'application/json; charset=utf-8'
                 },
                 data: site
-            };
+            }
 
             return $http(config);
         },
-
-     
 
         updateSite: function (site) {
             var endpoint = baseURL + "/api/Sites/" + site.SiteID;
@@ -137,10 +135,10 @@ var baseURL = "http://localhost:7070"
                 method: "PUT",
                 url: endpoint,
                 headers: {
-                    'Content-Type': 'application/json; charset=utf-8'
+                      'Content-Type': 'application/json; charset=utf-8'
                 },
                 data: site
-            };
+            }
 
             return $http(config);
         },
@@ -167,18 +165,8 @@ var baseURL = "http://localhost:7070"
             return $http(config);
         },
 
-        getSites: function (mapId) {
-                var endpoint = baseURL + "/site/list/" + mapId;
-                var config = {
-                    method: "get",
-                    url: endpoint,
-                    headers: { 'Content-Type': 'application/json; charset=utf-8' }
-                };
-                return $http(config);
-            },
-
         getPhotos: function (siteID) {
-            var endpoint = baseURL + "/photo/list/" + siteID;
+            var endpoint = baseURL + "/api/Photos/" + siteID;
             var config = {
                 method: "get",
                 url: endpoint,
@@ -256,7 +244,8 @@ var baseURL = "http://localhost:7070"
         },
 
         getJournals: function (siteID) {
-            var endpoint = baseURL + "/journal/list/" + siteID;
+
+            var endpoint = baseURL + "/api/Journals/" + siteID;
             var config = {
                 method: "get",
                 url: endpoint,
@@ -266,7 +255,7 @@ var baseURL = "http://localhost:7070"
         },
 
         addJournal:function(journal){
-        var endpoint = baseURL + "/journal/create"
+        var endpoint = baseURL + "/api/Journals"
         var config = {
             method: "post",
             url: endpoint,
@@ -279,7 +268,7 @@ var baseURL = "http://localhost:7070"
         },
 
         updateJournal: function (journal) {
-            var endpoint = baseURL + "/journal/"+journal.JournalID
+            var endpoint = baseURL + "/api/Journals/"+journal.JournalID
             var config = {
                 method: "PUT",
                 url: endpoint,
@@ -292,7 +281,7 @@ var baseURL = "http://localhost:7070"
         },
 
         deleteJournal: function (JournalID) {
-            var endpoint = baseURL + "/journal/" + JournalID
+            var endpoint = baseURL + "/api/Journals/" + JournalID
             var config = {
                 method: "DELETE",
                 url: endpoint,
@@ -313,6 +302,7 @@ var baseURL = "http://localhost:7070"
                 },
                 data: device
             }
+
             return $http(config);
         },
        

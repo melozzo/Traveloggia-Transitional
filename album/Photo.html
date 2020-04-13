@@ -1,0 +1,78 @@
+﻿<div ng-style="scrollWindowStyle" ng-controller="AlbumController"
+     class="slate" style="padding:16px;overflow-y:auto;">
+
+
+
+    <div ng-show="selectedPhoto != null" ng-controller="PhotoController">
+
+
+        <div ng-if="selectedPhoto.StorageURL !=null " style="margin:0px;padding:0px;">
+
+            <div ng-if="selectedPhoto.orientationID ==null || selectedPhoto.orientationID ==1 || selectedPhoto.orientationID ==2 || selectedPhoto.orientationID ==4 ||  Capabilities.alreadyKnowsHow == true">
+                <img ng-style="getImageStyle(selectedPhoto)"
+                     ng-src="{{  imageServer + imagePath + selectedPhoto.FileName}}" />
+            </div>
+
+
+            <div ng-if="selectedPhoto.orientationID != null && selectedPhoto.orientationID !=1 && selectedPhoto.orientationID !=2  && selectedPhoto.orientationID !=4  && Capabilities.alreadyKnowsHow ==false">
+                <img style="position:absolute;visibility:hidden"
+                     on-load="RotateAndSwap($event, selectedPhoto.orientationID,selectedPhoto)"
+                     ng-src="{{  imageServer + imagePath + selectedPhoto.FileName  + imageRefresher.queryString}}" />
+                <canvas id="canvas" style="display:block;"></canvas>
+            </div>
+        </div>
+
+        <div ng-if="selectedPhoto.StorageURL==null">
+            <div>
+                <img ng-style="getImageStyle(selectedPhoto)"
+                     ng-src="{{oldImagePath + selectedPhoto.FileName }}" />
+            </div>
+
+        </div>
+
+        <div style="margin-top:5px;padding-right:5px;">
+
+            <div ng-include="'common/SocialMediaToolbar.html'"></div>
+        </div>
+
+
+
+
+        <div class="infoText " style="margin-top:16px;margin-bottom:16px;">
+
+
+            <div class="form-group">
+                <div class="infoText reverseText">Date Taken:</div>
+                <input type="text" value="{{selectedPhoto.DateTaken| date: 'MM/dd/yyyy hh:mm:ss'}}" class="form-control legible" id="Date" />
+            </div>
+
+            <div class="form-group">
+                <div class="infoText reverseText">Caption:</div>
+                <textarea rows="4" ng-model="selectedPhoto.Caption" class="form-control legible" id="Caption"
+                          style="word-wrap:normal"></textarea>
+            </div>
+
+            <div class="form-group">
+                <div class="infoText reverseText">File Name:</div>
+                <input type="text" ng-model="selectedPhoto.FileName" class="form-control legible" id="FileName">
+            </div>
+
+
+            <div class="sheerButtonContainer" ng-controller="PhotoController">
+                <div ng-show="stateMachine.state=='CAN_EDIT' " class="skyBlue sheerButton ">
+                    <a href="" ng-click="updatePhoto()">Save</a>
+                </div>
+
+                <div ng-show="stateMachine.state=='CAN_EDIT' " class="skyBlue sheerButton ">
+                    <a href="" ng-click="confirmDeletePhoto()">Delete</a>
+                </div>
+            </div>
+
+            <div class="spacer250"></div>
+
+
+        </div>
+
+    </div>
+
+</div>

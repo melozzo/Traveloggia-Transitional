@@ -78,7 +78,7 @@
                             } else {
                                 let mapId = result.data.MapID;
                                 DataTransportService.getSites(mapId).then( result2=>{
-                                       result.data[0].Sites = result2.data;
+                                       result.data.Sites = result2.data;
                                        console.log("site list length", result2.data.length)
                                        local_scope.Repository.put("Sites", result2.data)
                                        resolve(result.data)
@@ -123,8 +123,8 @@
                                     let selectedMap = result.data;
                                     let mapId = selectedMap.MapID;
                                     DataTransportService.getSites(mapId).then( sites=>{
-                                           selectedMap.Sites = sites;
-                                           local_scope.Repository.put("Sites", sites)
+                                           selectedMap.Sites = sites.data;
+                                           local_scope.Repository.put("Sites", sites.data)
                                            resolve(selectedMap)
                                     })            
                                 }

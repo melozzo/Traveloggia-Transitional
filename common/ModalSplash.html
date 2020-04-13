@@ -1,0 +1,73 @@
+﻿
+<div class="modal-body papyrus" ng-class="{'modal-slideup': animateModal} " style="width:375px;">
+
+    <img src="./image/ship.png"
+         class="splashIcon" /> <span style="font-size:25px">Traveloggia</span>
+
+
+    <div style="text-align:center">
+        <h3>21 century explorers</h3>
+        <h2>  Build your own map  </h2>
+
+        <p>
+
+            plan a trip using the Traveloggia digital platform
+        </p>
+    </div>
+
+    <div style="text-align:center;">
+        <a href="" class="splashBtn" ng-click="clearSplashReadOnly()">See examples </a><br />
+        <a href="" class="splashBtn" ng-click="clearSplashCreate()">create free account </a>
+    </div>
+
+
+    <div id="instructions">
+
+
+
+        <div class="splashHeader">
+          To add a location :
+            <ul style="list-style:none">
+                <li>  <img src="./image/stars.png" class="splashIconSmall" />Get current location </li>
+                <li>
+                    <img class="splashIconSmall" src="./image/glass.png" title="Search" />Search for an address
+                </li>
+                <li>
+                    <img title="enable add pushpin"
+                         src="./image/anchor.png"
+                         class="splashIconSmall " />Click on the map
+                </li>
+
+            </ul>
+        </div>
+
+
+
+
+        <div class="splashHeader">
+            <img src="./image/sun.png"
+                 class="splashIcon" />
+            Upload Photos
+        </div>
+
+        <div class="splashHeader">
+            <img src="./image/largepalm.png"
+                 class="splashIcon" />
+            Enter Contact Info
+        </div>
+
+
+
+        <div class="splashHeader">
+            <img title="Map List"
+                 class="splashIcon"
+                 src="./image/steering.png" />
+            Make another map
+        </div>
+
+
+
+    </div>
+
+</div>
+<div class="modal-background" ng-show="splashVisible"></div>

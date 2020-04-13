@@ -1,0 +1,38 @@
+﻿
+
+<div id="smallToolbar" class="bluenav"   
+style="width:100%;padding:0px;" >
+        
+    <div style="width:100%;overflow-x:visible;">
+
+
+
+
+        <div class="clickableDiv" title="New Map" ng-click="showMapEditWindow('add')">
+            <img src="./image/plus.png"
+                 class="dottedBorderRed glow"
+                 ng-class="{'poppedUp' : selectedState.addSelected == true}" />
+        </div>
+
+        <div class="clickableDiv" title="Edit Map" ng-click="editMap()">
+            <img ng-class="{'poppedUp' : selectedState.editSelected == true}"
+                 class="dottedBorderRed glow" src="./image/pencil.png" />
+
+        </div>
+
+        <div class="clickableDiv" ng-click="confirmDelete()" title="Delete Map">
+            <img ng-class="{'poppedUp' : selectedState.deleteSelected == true}"
+                 src="./image/minus.png" class="dottedBorderRed glow" />
+        </div>
+
+        <!--<div style=" position:absolute;right:5px;top:2px">
+
+        <div ng-include="'common/SocialMediaToolbar.html'"></div>
+    </div>-->
+
+    </div>
+
+    </div>    
+     
+
+

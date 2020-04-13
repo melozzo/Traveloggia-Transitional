@@ -1,0 +1,21 @@
+﻿<div ng-controller="CalendarController"
+     ng-style="scrollWindowStyle"
+     class="skyBlue"
+     style="margin-left:auto;margin-right:auto;padding:0px;overflow-y:auto;-webkit-overflow-scrolling: touch;max-width:450px;">
+
+    <div style="height:100px;padding:12px">
+        <button  ng-click="changeView('month', 'traCalendar')">Month</button>
+        <button  ng-click="changeView('agendaWeek' , 'traCalendar')">Week</button>
+        <button  ng-click="changeView('agendaDay' , 'traCalendar')">Day </button>
+    </div>
+    <div>
+        <div class="calendar"
+             ng-model="eventSources"
+             calendar="traCalendar"
+             ui-calendar="uiConfig.calendar"></div>
+
+    </div>
+
+  
+
+</div>
