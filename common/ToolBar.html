@@ -5,14 +5,7 @@
         }
 </style>
 
-<div style="color:white;font-size:larger;background-color:blueviolet;position:absolute;top:50px;left:20px;width:350px;height:400px;z-index:1299">
-        <ul class="dropdown-menu" id="siteListDropDown" style="padding:3px;width:360px">
-                <li ng-repeat="site in AllSites" style="margin-bottom:8px;margin-right:40px">
-                        <a href="" ng-click="selectSite(site)"
-                         ng-class="{'siteListDropDownSelected': site.Name==selectedSite.Name}">wwjjii{{site.Name}}</a>
-                </li>
-        </ul>
-</div> 
+
 
 <div class="bluenav toolbar" style="display:flex;flex-direction:row;align-items:center;height:66px;">
 
@@ -92,6 +85,16 @@
      
 
 </div>
+<!-- <div ng-show="AllSites.length > 0"  style="color:white;font-size:larger;background-color:beige;width:30%;
+      height:400px;z-index:1299">
+  <ul class="dropdown-menu" id="siteListDropDown" style="color:white;padding:3px;width:300px">
+      <li>{{site.Name}</li>
+          <!-- <li ng-repeat="site in AllSites" style="margin-bottom:8px;margin-right:40px">
+                  <a href="" ng-click="selectSite(site)"
+                   ng-class="{'siteListDropDownSelected': site.Name==selectedSite.Name}">{{site.Name}}</a>
+          </li> 
+  </ul>
+</div>  -->
 
    
 

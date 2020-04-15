@@ -163,7 +163,7 @@ angularTraveloggia.controller('UploadController', function ($scope, $routeParams
 
     var uploadFile = function () {
         var memberID = SharedStateService.getAuthenticatedMemberID();
-        var mapID = SharedStateService.Repository.get("Map").MapID;
+        var mapID = $routeParams.mapID? $routeParams.mapID:SharedStateService.Repository.get("Map").MapID;
         for (var i = 0; i < $scope.filesToUpload.length; i++) {
             (function (imageFile, fileName) {
 

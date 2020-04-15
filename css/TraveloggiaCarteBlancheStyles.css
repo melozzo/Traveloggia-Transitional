@@ -142,7 +142,7 @@ text-align:center;
 
 
 .infoText {
-    font-family:Centaur;
+    font-family:Karla;
 }
 
 .reverseText {
@@ -152,7 +152,7 @@ text-align:center;
 
 /*used by site list*/
 .sitelistText {
-  font-family:Centaur;
+  font-family:Karla;
   font-size:18px;
   font-weight:400;
 
@@ -375,7 +375,7 @@ padding:5px;
    padding:16px 26px;
    margin-left:auto;
    margin-right:auto;
-   color:#12A5B5;
+   /* color:#12A5B5; */
    font-size:18px;
     max-width:500px;
     height:100%;
@@ -508,6 +508,7 @@ padding:5px;
         overflow: hidden;
     }
     .phone {
+        width:70%;
         max-width: 70%;
         width: 70%;
         overflow: hidden;

@@ -1,0 +1,30 @@
+﻿
+
+
+  
+
+        <div class="card" style="width:250px" ng-repeat="stopover in AllSites"   on-finish-render="ngRepeatFinished">
+            <div class="card-header"  style="background-color:#244F55;color:white;font-size:14px;"   
+                 ng-click="goSiteDetail(stopover)" >{{stopover.Name}}
+            </div>
+            <div class="card-body " >
+                <div>
+                   <!-- <div>{{stopover.Address}}</div>-->
+                    <div >
+                         <span >ARRIVE:&nbsp;&nbsp;</span>
+                         <span style="color:#b9f23e">{{stopover.Arrival | date:'MMM d yyyy h:mm a'}} </span>
+                    </div>
+                    <div >
+                        <span >DEPART:&nbsp;&nbsp;</span><span style="color:#b9f23e">{{stopover.Departure | date:'MMM d yyyy h:mm a'}}</span></div>
+                    </div>
+                </div>
+        </div>
+
+
+
+
+
+
+
+
+  

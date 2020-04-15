@@ -108,12 +108,11 @@ angularTraveloggia.controller("PreviewMapController", function ($routeParams,$sc
         $scope.systemMessage.loadComplete = false;
         SharedStateService.getMap(mapID)
             .then(function (map) {
-                $scope.$apply(function () {
+                  $scope.$emit("sitesLoaded");
+                  $scope.$apply(function () {
                     $scope.systemMessage.loadComplete = true;
-                    if ($routeParams.siteID !== "0")
-                        $scope.$emit("sitesLoaded");
+                   // if ($routeParams.siteID !== "0")
                     //else
-                       
                       //  $scope.broadcastClearSite();
                 });
             

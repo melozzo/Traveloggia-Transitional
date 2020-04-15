@@ -198,11 +198,9 @@
 
             <td id="viewFrame" class="phone" style="vertical-align: top;">
 
-                <div id="toolbarRow" ng-hide="selectedState.mapListSelected==true || selectedState.signInSelected == true || selectedState.createSelected==true" style="top: 0px">
-                    <div ng-include="'common/ToolBar.html'"></div>
-
-                </div>
-
+                  <div id="toolbarRow" ng-hide="selectedState.mapListSelected==true || selectedState.signInSelected == true || selectedState.createSelected==true" style="top: 0px">
+                        <div ng-include="'common/ToolBar.html'"></div>
+                  </div>
 
                 <table style="width: 100%; height: 100%; padding: 0px; border: none">
                     <tr>
@@ -216,7 +214,7 @@
                             </div>
 
 
-                            <div ng-view style="border: none; padding: 0px; margin: 0px; display: inline;">
+                            <div ng-view style="width:100%; border: none; padding: 0px; margin: 0px; ">
                             </div>
 
                             <confirm-cancel id="dlgConfirmCancel"
@@ -231,7 +229,10 @@
                         </td>
                     </tr>
                 </table>
-
+                
+                  <!-- <div  style="position:absolute;top:68px;z-index:1399;width:30%">
+                        <div style="width:250px" ng-include = "'site/SiteList2.html'"></div>
+                  </div> -->
             </td>
 
             <td id="previewFrame" class="desktop bluenav" style="

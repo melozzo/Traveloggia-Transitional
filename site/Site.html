@@ -5,13 +5,13 @@
 <div  ng-controller="SiteController as siteCtrl"  
     ng-style="scrollWindowStyle" 
     class="skyBlue"
-    style="margin-left:auto;margin-right:auto;padding:0px;overflow-y:auto;-webkit-overflow-scrolling: touch;max-width:450px;" >
+    style="width:100%;overflow-y:auto;-webkit-overflow-scrolling: touch;" >
 
 
-            <form class=" infoText listColumn"  id="SiteInfo">
+            <form class="infoText listColumn"  id="SiteInfo" style="float:right">
                
                  <div class="cloudBlue menuText listHeader" >
-                    {{siteCtrl.Site.Name}}
+                    {{"Site Info"}}
                 </div>
 
                 <div class="form-group">
@@ -152,7 +152,7 @@
         <div class="spacer250"></div>
 
 
-            </form>
+            </form> 
 
 
    <script>

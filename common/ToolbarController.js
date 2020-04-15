@@ -1,55 +1,9 @@
 ﻿angularTraveloggia.controller('ToolbarController', function ($routeParams, SharedStateService, $scope, $location, $window) {
 
-    // used by drop down list to style the selected item -
-    $scope.selectedSite = null;
-    $scope.SiteList = [];
-    $scope.AllSites = [];
-    $scope.preview = {
-        windowOne: "",
-        windowTwo: "",
-        windowThree: ""
-    };
+ // LISTENERS AND WATCHERS
 
-    $scope.Swap = {
-        Map: true,
-        SiteList: false
-    };
-
-    $scope.rootUrl = $window.location.href.replace("Index.html", "");
-
-    // added when we moved the edit buttons to the tool bar 
-    // not so crazy about this idea but realestate wise its... 
-    $scope.toolbarState = {
-        editingJournal: false,
-        editingMap: false,
-        hasEditPermission: SharedStateService.getAuthorizationState()
-    };
-
-
-
-
-    // LOADER
-
-    var loadSites = function () {
-        var cachedSites = SharedStateService.Repository.get('Sites');
-        $scope.AllSites = cachedSites;
-       
-        if (typeof $routeParams.siteID === "undefined")
-            $scope.rolloverSite(cachedSites[0]);
-        else {
-            var site = SharedStateService.getSelectedSite($routeParams.siteID);
-            $scope.rolloverSite(site);
-        }
-
-    };
-
-    $scope.broadcastClearSite = function () {
-        $scope.$broadcast("clearSite");
-    };
-
-    // LISTENERS AND WATCHERS
-
-    $scope.$on("sitesLoaded", function (event, data) {
+ $scope.$on("sitesLoaded", function (event, data) {
+      console.log("sites are loaded ")
         loadSites();
     });
 
@@ -57,8 +11,6 @@
     $scope.$on("toggleJournalEdit", function (event, data) {
         $scope.toolbarState.editingJournal = data;
     });
-
-
 
     // this re-orders the preview panes - with a more advanced routing tool...
     $scope.$on(
@@ -149,6 +101,54 @@
         }
     );
 
+    // used by drop down list to style the selected item -
+    $scope.selectedSite = null;
+    $scope.SiteList = [];
+    $scope.AllSites = [{Name:"Bunnies"}, {Name:"Chocolates"}, {Name:"Kisses"}];
+    $scope.preview = {
+        windowOne: "",
+        windowTwo: "",
+        windowThree: ""
+    };
+
+    $scope.Swap = {
+        Map: true,
+        SiteList: false
+    };
+
+    $scope.rootUrl = $window.location.href.replace("Index.html", "");
+
+    // added when we moved the edit buttons to the tool bar 
+    // not so crazy about this idea but realestate wise its... 
+    $scope.toolbarState = {
+        editingJournal: false,
+        editingMap: false,
+        hasEditPermission: SharedStateService.getAuthorizationState()
+    };
+
+
+
+
+    // LOADER
+
+    var loadSites = function () {
+        var cachedSites = SharedStateService.Repository.get('Sites');
+        $scope.AllSites = cachedSites;
+       console.log("all sites length is ", $scope.AllSites.length)
+        if (typeof $routeParams.siteID === "undefined")
+            $scope.rolloverSite(cachedSites[0]);
+        else {
+            var site = SharedStateService.getSelectedSite($routeParams.siteID);
+            $scope.rolloverSite(site);
+        }
+
+    };
+
+    $scope.broadcastClearSite = function () {
+        $scope.$broadcast("clearSite");
+    };
+
+   
 
 
     /***WATCH SITE ID*****/
@@ -216,8 +216,8 @@
 
     //// goAlbum
     $scope.goAlbum = function (mapID, siteID) {
-        mapID = SharedStateService.Repository.get("Map").MapID;
-        siteID = SharedStateService.getSiteID();
+        mapID = $routeParams.mapID? $routeParams.mapID:SharedStateService.Repository.get("Map").MapID;
+        siteID = $routeParams.siteID  ? $routeParams.siteID:SharedStateService.getSiteID();
         $location.path("/Album/" + mapID + "/" + siteID);
 
     };
@@ -275,11 +275,9 @@
     };
 
     $scope.goCalendar = function () {
-        mapID = SharedStateService.Repository.get("Map").MapID;
+        mapID = $routeParams.mapID? $routeParams.mapID:SharedStateService.Repository.get("Map").MapID;
         let strPath = "/Calendar/" + mapID;
         $location.path(strPath);
     };
-
-
 
 });
