@@ -5,7 +5,6 @@
         addSelected: false,
         editSelected: false,
         deleteSelected: false,
-       
     };
 
     $scope.selectedMapID = $routeParams.mapID;
@@ -16,7 +15,6 @@
         $scope.selectedMap = map;
        
     };
-
 
     $scope.switchAndGo = function (map) {
         $scope.switchMap(map);
@@ -64,7 +62,6 @@
 
 
     $scope.editMap = function () {
-
         var authState = SharedStateService.getAuthorizationState();
         if (authState === "READ_ONLY") {
             $scope.systemMessage.text = "sign in or create an account to edit maps";
@@ -77,7 +74,6 @@
             }
             else
                 $scope.showMapEditWindow("edit");
-
         }
     };
 
@@ -168,10 +164,18 @@
             DataTransportService.updateMap($scope.selectedMap).then(
                 function (result) {
                     SharedStateService.Repository.put("Map", result.data);
-                    SharedStateService.updateCache("MapList", "MapID", $routeParams.mapID, mapToEdit);
-                    $scope.MapList = SharedStateService.Repository.get("MapList");
                     $scope.systemMessage.text = "map was updated successfully";
                     $scope.systemMessage.activate();
+                  //  SharedStateService.updateCache("MapList", "MapID", $routeParams.mapID, result);
+                  //  $scope.MapList = SharedStateService.Repository.get("MapList");
+                  DataTransportService.getMapList(result.data.MemberID)
+                  .then( result=>{
+                        SharedStateSevervice.Repository.put("MapList", result.data);
+                    
+                        $scope.$apply( ()=>{
+                              $scope.MapList = result.data;
+                        });
+                  })
                 },
                 function (error) {
                     $scope.systemMessage.text = "error updating map";

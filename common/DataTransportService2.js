@@ -132,7 +132,7 @@ var baseURL = "http://localhost:7070"
      
 
         updateSite: function (site) {
-            var endpoint = baseURL + "/api/Sites/" + site.SiteID;
+            var endpoint = baseURL + "/site/" + site.SiteID;
             var config = {
                 method: "PUT",
                 url: endpoint,
@@ -146,7 +146,7 @@ var baseURL = "http://localhost:7070"
         },
 
         deleteSite:function(siteID){
-            var endpoint = baseURL + "/api/Sites/" + siteID
+            var endpoint = baseURL + "/site/" + siteID
             var config = {
                 method: "DELETE",
                 url: endpoint,
@@ -157,15 +157,15 @@ var baseURL = "http://localhost:7070"
             return $http(config);
         },
 
-        getScheduledSites: function (mapId) {
-            var endpoint = baseURL + "/api/ScheduledSites/" + mapId;
-            var config = {
-                method: "get",
-                url: endpoint,
-                headers: { 'Content-Type': 'application/json; charset=utf-8' }
-            };
-            return $http(config);
-        },
+      //   getScheduledSites: function (mapId) {
+      //       var endpoint = baseURL + "/api/ScheduledSites/" + mapId;
+      //       var config = {
+      //           method: "get",
+      //           url: endpoint,
+      //           headers: { 'Content-Type': 'application/json; charset=utf-8' }
+      //       };
+      //       return $http(config);
+      //   },
 
         getSites: function (mapId) {
                 var endpoint = baseURL + "/site/list/" + mapId;
@@ -188,7 +188,7 @@ var baseURL = "http://localhost:7070"
         },
       
         addPhoto: function (photo) {
-            var endpoint = baseURL + "/api/Photos";
+            var endpoint = baseURL + "/photo";
             var config = {
                 method: "post",
                 url: endpoint,
@@ -200,7 +200,7 @@ var baseURL = "http://localhost:7070"
         },
 
         updatePhoto: function (photo) {
-            var endpoint = baseURL + "/api/Photos/" + photo.PhotoID;
+            var endpoint = baseURL + "/photo/" + photo.PhotoID;
             var config = {
                 method: "PUT",
                 url: endpoint,
@@ -215,7 +215,7 @@ var baseURL = "http://localhost:7070"
 
 
         deletePhoto: function (photoID) {
-            var endpoint = baseURL + "/api/Photos/" + photoID
+            var endpoint = baseURL + "/photo/" + photoID
             var config = {
                 method: "DELETE",
                 url: endpoint,

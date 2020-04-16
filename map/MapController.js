@@ -117,9 +117,10 @@ angularTraveloggia.controller('MapController', function ($scope, $location, $rou
                 });
 
                 Microsoft.Maps.Events.addHandler(pin, 'mouseover', function () {
-                    if( ! $scope.selectedState.editSelected)
-                        $scope.rolloverSite(site);
-                  
+                    if( ! $scope.selectedState.editSelected){
+                              SharedStateService.selectedSite = site;
+                              $scope.rolloverSite(site);
+                    }
                 });
 
                 //if (isDraggable == true) {

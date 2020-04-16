@@ -15,6 +15,16 @@
         else
         VM.Site = SharedStateService.getSelectedSite(id);
     }
+
+    $scope.$on("rolloverSelect", function (event, site) {
+      if ($routeParams.siteID !== "0") {
+            if(site){
+                  VM.Site = site
+                  makeDates(site);
+            }
+             
+      }
+  });
        
     $scope.$on("clearSite", function (event, data) {
         VM.Site = null;
@@ -30,19 +40,7 @@
 
     // this is when mouseover site on map page
     // url params dont update
-    $scope.$on("rolloverSelect", function (event, data) {
-        if ($routeParams.siteID !== "0") {
-            if (data != null) {
-                VM.Site = data;
-                makeDates(data);
-
-            }
-          
-
-
-        }
-        
-    });
+    
 
     //// the point of this is auto save edits, since the save button is 
     //// at the bottom of the page and users are incredibly stupid and lazy

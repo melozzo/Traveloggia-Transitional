@@ -1,7 +1,6 @@
 ﻿angularTraveloggia.service('SharedStateService', function (  $routeParams, DataTransportService, isEditing, readOnly, canEdit, $cacheFactory, $cookies, $q) {
 
     var local_scope = this;
-
     local_scope.Repository = $cacheFactory('Repository', {});
     local_scope.Repository.put('Map', null);
     local_scope.Repository.put('Sites', []);
@@ -11,7 +10,6 @@
         state: null
     };
     local_scope.Selected = {};
-   
 
     // bootstrap to a demo user  
     // getAuthMemberId is the first call into shared state
@@ -92,8 +90,6 @@
         }
     };
 
-
-
     local_scope.getDefaultMap = function () {
         return new Promise(function (resolve, reject) {
             var memberId = local_scope.getAuthenticatedMemberID();
@@ -157,8 +153,6 @@
         return site;
     };
 
-
-
     local_scope.getSiteID = function () {
         var siteID = 0;
         if ( local_scope.Selected["Site"] != null)
@@ -171,7 +165,6 @@
         return siteID;
     };
 
-   
 
     local_scope.getPhotos = function (id) {
         return new Promise(function (resolve, reject) {
@@ -213,6 +206,7 @@
 
         return photo;
     };
+    
 
     local_scope.getJournal = function (id) {
         var journal;
@@ -227,6 +221,11 @@
     };
 
     local_scope.getJournals = function (id) {
+          if(!id)
+          {
+                console.log( "site id for journals is null");
+                return;
+          }
         return new Promise(function (resolve, reject) {
             var cachedJournals = local_scope.Repository.get('Journals');
             if (cachedJournals.length > 0 && cachedJournals[0].SiteID.toString() === id.toString()) {

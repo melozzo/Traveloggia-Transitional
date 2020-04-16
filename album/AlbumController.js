@@ -42,9 +42,6 @@ angularTraveloggia.controller('AlbumController', function ($scope, $location, $r
             });
     };
 
-
-
-
    var siteID = $routeParams.siteID;
     if (typeof siteID !== "undefined")
         loadPhotos(siteID);
@@ -70,11 +67,10 @@ angularTraveloggia.controller('AlbumController', function ($scope, $location, $r
 
 // this is when mouseover site on map page
     // url params dont update
-    $scope.$on("rolloverSelect", function (event, data) {
-        var selectedSite = data;
+    $scope.$on("rolloverSelect", function (event, site) {
         $scope.PhotoList = [];
-        if(selectedSite != null )
-        loadPhotos(data.SiteID);
+        if(site && site.SiteID)
+            loadPhotos(site.SiteID);
     });
     
     $scope.stateMachine = {

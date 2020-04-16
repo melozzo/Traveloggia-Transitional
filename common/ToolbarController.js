@@ -7,7 +7,6 @@
         loadSites();
     });
 
-
     $scope.$on("toggleJournalEdit", function (event, data) {
         $scope.toolbarState.editingJournal = data;
     });
@@ -128,7 +127,6 @@
 
 
 
-
     // LOADER
 
     var loadSites = function () {
@@ -147,8 +145,6 @@
     $scope.broadcastClearSite = function () {
         $scope.$broadcast("clearSite");
     };
-
-   
 
 
     /***WATCH SITE ID*****/
@@ -184,7 +180,7 @@
     };
 
     $scope.rolloverSite = function (site) {
-        $scope.selectedSite = site;
+       $scope.selectedSite = site;
         SharedStateService.Selected["Site"] = site;
         $scope.$broadcast("rolloverSelect", site);
     };
@@ -216,8 +212,8 @@
 
     //// goAlbum
     $scope.goAlbum = function (mapID, siteID) {
-        mapID = $routeParams.mapID? $routeParams.mapID:SharedStateService.Repository.get("Map").MapID;
-        siteID = $routeParams.siteID  ? $routeParams.siteID:SharedStateService.getSiteID();
+        mapID = mapID? mapID:$routeParams.mapID? $routeParams.mapID:SharedStateService.Repository.get("Map").MapID;
+        siteID = siteID? siteID:$routeParams.siteID  ? $routeParams.siteID:SharedStateService.getSiteID();
         $location.path("/Album/" + mapID + "/" + siteID);
 
     };
@@ -268,11 +264,11 @@
         $location.path("/Map/" + map.MapID);
     };
 
-    $scope.goSiteList = function () {
-        mapID = SharedStateService.Repository.get("Map").MapID;
-        let strPath = "/SiteList/" + mapID;
-        $location.path(strPath);
-    };
+//     $scope.goSiteList = function () {
+//         mapID = SharedStateService.Repository.get("Map").MapID;
+//         let strPath = "/SiteList/" + mapID;
+//         $location.path(strPath);
+//     };
 
     $scope.goCalendar = function () {
         mapID = $routeParams.mapID? $routeParams.mapID:SharedStateService.Repository.get("Map").MapID;

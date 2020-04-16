@@ -33,7 +33,7 @@ angularTraveloggia.controller('CalendarController', function ($scope, $compile, 
 
             var selectedMapID = SharedStateService.getMapID();
             if (selectedMapID != null) {
-                DataTransportService.getScheduledSites(selectedMapID)
+                DataTransportService.getSites(selectedMapID)
                     .then(function (result) {
                         result.data.forEach(function (siteElement) {
                             if (siteElement.Arrival != null) {

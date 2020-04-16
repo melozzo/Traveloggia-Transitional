@@ -6,14 +6,12 @@ angularTraveloggia.filter('unsafe', function ($sce) {
 });
 
 
-angularTraveloggia.controller('JournalController', function (DataTransportService, canEdit, readOnly, isEditing, $scope, SharedStateService, $location, $routeParams) {
+angularTraveloggia.controller('JournalController', function ($scope,  $location, $routeParams, DataTransportService, SharedStateService, canEdit, readOnly, isEditing, ) {
 
     $scope.JournalEntries = [];
     $scope.Journal = null;
     $scope.journalIndex = 0;
     SharedStateService.Selected["Journal"]= null;
-
-   
 
     $scope.stateMachine = {
         state: SharedStateService.getAuthorizationState()
@@ -78,8 +76,9 @@ angularTraveloggia.controller('JournalController', function (DataTransportServic
                 }
             })
             .catch(function (error) {
-                $scope.systemMessage.text = "error fetching journals" + error.data.Message;
-                $scope.systemMessage.activate();
+                  console.log(JSON.stringify(error))
+               // $scope.systemMessage.text = "error fetching journals" + error;
+              //  $scope.systemMessage.activate();
             });
     };
 
@@ -105,9 +104,8 @@ angularTraveloggia.controller('JournalController', function (DataTransportServic
 // this is when mouseover site on map page
     // url params dont update 
     $scope.$on("rolloverSelect", function (event, data) {
-
         var selectedSite = data;
-        if (selectedSite != null)
+        if (selectedSite)
             loadJournals(selectedSite.SiteID);
         else {
             $scope.JournalEntries = [];
