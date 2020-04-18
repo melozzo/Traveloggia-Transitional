@@ -230,7 +230,7 @@ var baseURL = "http://138.68.12.0:8080"
             var uploadResult = $q.defer();
             //using the amazon javascript api
             var bucketName = 'traveloggia-guests';
-            AWS.config.update({ accessKeyId: 'AKJJJ3HMMVLV65CHUPUA', secretAccessKey: 'Wz/zLP5/kLpbopdilaRbxBnR5vuW5N4/g0jilhYT' })
+            AWS.config.update({ accessKeyId: 'AKIAJ3HMMVLV65CHUPUA', secretAccessKey: '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' })
             AWS.config.region = 'us-west-2'
             var objKey = memberID + "/" + mapID + "/" + fileName;
             var bucket = new AWS.S3({
