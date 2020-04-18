@@ -1,7 +1,7 @@
 ﻿
 angularTraveloggia.factory('DataTransportService', function ($http,$q) {
  //   var baseURL = "http://localhost/TraveloggiaServices";
-var baseURL = "http://localhost:7070"
+var baseURL = "http://138.68.12.0:8080"
     return {
    
         getMember: function (email, password) {
