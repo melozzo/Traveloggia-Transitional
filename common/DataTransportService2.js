@@ -188,7 +188,7 @@ var baseURL = "http://138.68.12.0:8080"
         },
       
         addPhoto: function (photo) {
-            var endpoint = baseURL + "/photo";
+            var endpoint = baseURL + "/photo/create";
             var config = {
                 method: "post",
                 url: endpoint,
