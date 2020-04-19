@@ -170,10 +170,7 @@ angularTraveloggia.controller('UploadController', function ($scope, $routeParams
                 var photoRecord = getObjectByProperty($scope.photoRecords, "FileName", imageFile.name);
                 fileName = imageFile.name.toUpperCase().replace('.JPG', '') + "_tra_" + moment().format('MMDDYYhhmmss') + ".JPG";
                 photoRecord.FileName = fileName;
-
                 $scope.photoRecords.push(photoRecord);
-
-
                 DataTransportService.uploadImage(memberID, mapID, imageFile, fileName).then(
                     function (result) {
                         $scope.addPhotoRecord(photoRecord);

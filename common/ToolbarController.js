@@ -264,11 +264,6 @@
         $location.path("/Map/" + map.MapID);
     };
 
-//     $scope.goSiteList = function () {
-//         mapID = SharedStateService.Repository.get("Map").MapID;
-//         let strPath = "/SiteList/" + mapID;
-//         $location.path(strPath);
-//     };
 
     $scope.goCalendar = function () {
         mapID = $routeParams.mapID? $routeParams.mapID:SharedStateService.Repository.get("Map").MapID;
